@@ -9,10 +9,8 @@ import {
   LoginBtn,
 } from "./Login.style";
 
-
-
 const Login = (props) => {
-  const {setUser} = props;
+  const { setUser } = props;
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
   const onSubmit = async (e) => {
@@ -22,8 +20,8 @@ const Login = (props) => {
       await fetch("https://jsonplaceholder.typicode.com/users")
     ).json();
 
-    const User = await users.find(e => e.email == email);
-     setUser(User)
+    const User = await users.find((e) => e.email == email);
+    setUser(User);
     if (User) {
       navigate("/user");
     }

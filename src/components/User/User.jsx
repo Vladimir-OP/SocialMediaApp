@@ -1,30 +1,24 @@
 import { UserPosts } from "./User.style";
 import { useEffect, useState } from "react";
+import Posts from "../Posts/Posts";
 
-const User = async (props) => {
+const User = (props) => {
   const { user } = props;
-  console.log(user.id);
-  const {data} = (await fetch("https://jsonplaceholder.typicode.com/posts/1"),{
-    method:"GET"
-  });
-  console.log(data.json());
-  
-
+  const userId = user.id;
   useEffect(() => {
     (async () => {
-      const userPosts = await fetchPosts();
-      console.log(userPosts);
+      const userdata = await fetchUser();
     })();
   }, []);
 
-  const fetchPosts = async () => {
-  
-    const {data} = (await fetch(`https://jsonplaceholder.typicode.com/posts/1`)
-    ).json();
-    console.log(data);
-    
+  const fetchUser = async () => {
+    const result = await fetch(
+      `https://jsonplaceholder.typicode.com/users/${userId}`
+    );
+    const data = result.json();
+    return data;
   };
-  return (<UserPosts></UserPosts>);
+  return <Posts user={userId} />;
 };
 
 export default User;
