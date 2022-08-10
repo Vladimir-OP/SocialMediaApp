@@ -1,8 +1,18 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { LogoutBtn } from "./logout.style";
 
 const Logout = () => {
-  return <LogoutBtn><Link to={"/"}>Logout</Link></LogoutBtn>;
+  const navigate = useNavigate();
+
+  return (
+    <LogoutBtn
+      onClick={() => {
+        navigate("/");
+      }}
+    >
+      Logout
+    </LogoutBtn>
+  );
 };
 
 export default Logout;

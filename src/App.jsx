@@ -4,6 +4,7 @@ import { UserContext } from "./components/UserContext";
 import Login from "./components/Login/Login";
 import User from "./components/User/User";
 import Logout from "./components/LogOut/Logout";
+import NewPost from "./components/Posts/NewPost";
 
 function App() {
   const [user, setUser] = useState();
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/user" element={<User />} />
           <Route path="/logout" element={<Logout />} />
+          <Route path="/post" element={<NewPost />} />
         </Routes>
       </UserContext.Provider>
     </Router>

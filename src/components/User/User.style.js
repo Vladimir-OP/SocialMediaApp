@@ -7,7 +7,6 @@ const UserPosts = styled.div`
   height: auto;
   border: 1px solid black;
   margin: 4rem;
-  
 `;
 
 export { UserPosts };
