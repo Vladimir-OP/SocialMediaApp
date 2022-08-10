@@ -1,4 +1,5 @@
 import { useEffect, useContext } from "react";
+import NewPost from "../Posts/NewPost";
 import Posts from "../Posts/Posts";
 import { UserContext } from "../UserContext";
 
@@ -18,7 +19,11 @@ const User = () => {
 
     return data;
   };
-  return <Posts user={user} />;
+  return (
+    <>
+      <Posts user={user} />
+    </>
+  );
 };
 
 export default User;

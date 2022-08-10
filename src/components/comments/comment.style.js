@@ -8,6 +8,6 @@ const CommentBody = styled.p`
 
 const CommentName = styled.h4`
   color: grey !important;
-  text-decoration: underline 2px
+  text-decoration: underline 2px;
 `;
 export { CommentBody, CommentName };

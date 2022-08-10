@@ -1,7 +1,6 @@
-import { useNavigate } from "react-router-dom";
 import { UserContext } from "../UserContext";
 import { useContext, useState } from "react";
-import Logout from "../LogOut/Logout";
+
 import {
   NewPostCont,
   NewPostHeader,
@@ -9,17 +8,15 @@ import {
   TitleInputContainer,
   BodyContainer,
   NewPostBtn,
-  MyPostsBtn,
 } from "./NewPost.style";
 
-const NewPost = () => {
+const NewPost = (props) => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const { user } = useContext(UserContext);
-  const navigate = useNavigate();
+  const openPost = props.openPost;
 
   const onSubmit = async (e) => {
-    console.log(11);
     e.preventDefault();
     await fetch("https://jsonplaceholder.typicode.com/", {
       method: "POST",
@@ -34,14 +31,7 @@ const NewPost = () => {
     });
   };
   return (
-    <NewPostCont onSubmit={onSubmit}>
-      <MyPostsBtn
-        onClick={() => {
-          navigate("/user");
-        }}
-      >
-        My posts
-      </MyPostsBtn>
+    <NewPostCont openPost={openPost} onSubmit={onSubmit}>
       <NewPostHeader>Create New Post</NewPostHeader>
       <InputName>Post Title</InputName>
       <TitleInputContainer

@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Post from "./Post";
 import { PostContainer } from "./Post.style";
 import { UserName } from "./Posts.style";
 import Logout from "../LogOut/Logout";
+import { PostBtn } from "./Posts.style";
 import NewPost from "./NewPost";
-import { PostBtn } from "./NewPost.style";
 
 const Posts = (props) => {
   const [posts, setPosts] = useState([]);
   const [postStatus, setpostStatus] = useState();
+  const [openPost, setOpenPost] = useState(false);
   const user = props.user;
-  const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
@@ -38,13 +37,14 @@ const Posts = (props) => {
   return (
     <PostContainer>
       <UserName> Welcome {user.name}</UserName>
+      <NewPost openPost={openPost} />
       <Logout />
       <PostBtn
         onClick={() => {
-          navigate("/post");
+          setOpenPost((prev) => !prev);
         }}
       >
-        Make Post
+        New Post
       </PostBtn>
       {"  "}
       {posts.length > 0 ? posts.map((post) => <Post post={post} />) : msg}
