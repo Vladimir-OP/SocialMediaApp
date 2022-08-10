@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
+import { UserContext } from "../UserContext";
 
 import {
   LoginForm,
@@ -9,8 +10,8 @@ import {
   LoginBtn,
 } from "./Login.style";
 
-const Login = (props) => {
-  const { setUser } = props;
+const Login = () => {
+  const { setUser } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
   const onSubmit = async (e) => {
@@ -20,9 +21,9 @@ const Login = (props) => {
       await fetch("https://jsonplaceholder.typicode.com/users")
     ).json();
 
-    const User = await users.find((e) => e.email == email);
-    setUser(User);
-    if (User) {
+    const user = await users.find((e) => e.email == email);
+    setUser(user);
+    if (user) {
       navigate("/user");
     }
   };

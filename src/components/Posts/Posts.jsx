@@ -1,32 +1,42 @@
 import { useEffect, useState } from "react";
 import Post from "./Post";
 import { PostContainer } from "./Post.style";
+import { UserName } from "./Posts.style";
+import Logout from "../LogOut/Logout";
 
 const Posts = (props) => {
-  const [Posts, usePosts] = useState([]);
-  const userId = props.user;
-  console.log(userId);
+  const [posts, setPosts] = useState([]);
+  const [postStatus, setpostStatus] = useState();
+  const user = props.user;
 
   useEffect(() => {
     (async () => {
       const userPosts = await fetchPosts();
-      // eslint-disable-next-line react-hooks/rules-of-hooks
-      usePosts(userPosts);
+      setPosts(userPosts);
     })();
   }, []);
 
   const fetchPosts = async () => {
     const result = await fetch(
-      `https://jsonplaceholder.typicode.com/posts?userId=${userId}`
+      `https://jsonplaceholder.typicode.com/posts?userId=${user.id}`
     );
+    setpostStatus(true);
     const data = await result.json();
+    if (data) {
+      setpostStatus(false);
+    }
     return data;
   };
+  let msg = "posts are loading";
+  if (postStatus) {
+    msg = "no posts to show";
+  }
   return (
     <PostContainer>
-      {Posts.length > 0
-        ? Posts.map((post) => <Post post={post} />)
-        : "no posts to show"}
+      <UserName> Welcome {user.name}</UserName>
+      <Logout />
+      {"  "}
+      {posts.length > 0 ? posts.map((post) => <Post post={post} />) : msg}
     </PostContainer>
   );
 };

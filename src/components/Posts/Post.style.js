@@ -1,24 +1,39 @@
 import styled from "styled-components";
 
 const PostContainer = styled.div`
-  background: #cde1be;
+  background: white;
+  border: 1px solid steelblue;
   margin: 5px;
   padding: 10px 20px;
   width: 50rem;
+  margin-left: auto;
+  margin-right: auto;
 
   > div {
-    background:white;
-    border: 2px solid black;
-    width:46rem;
+    border: 4px double steelblue;
+    width: 46rem;
     > h3 {
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
+    > p {
+      color: steelblue;
+    }
   }
 `;
 
-const PostTitle = styled.h3``;
-const PostBody = styled.p``
+const PostTitle = styled.h3`
+  color: rgb(42, 98, 143);
+  text-decoration: underline 2px;
+`;
+const PostBody = styled.p``;
+const CommentBtn = styled.span`
+  cursor: pointer;
+  color: gray;
+  :hover {
+    color: steelblue;
+  }
+`;
 
-export { PostContainer, PostTitle,PostBody };
+export { PostContainer, PostTitle, PostBody, CommentBtn };

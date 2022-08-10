@@ -1,9 +1,9 @@
-import { UserPosts } from "./User.style";
-import { useEffect, useState } from "react";
+import { useEffect, useContext } from "react";
 import Posts from "../Posts/Posts";
+import { UserContext } from "../UserContext";
 
-const User = (props) => {
-  const { user } = props;
+const User = () => {
+  const { user } = useContext(UserContext);
   const userId = user.id;
   useEffect(() => {
     (async () => {
@@ -12,13 +12,13 @@ const User = (props) => {
   }, []);
 
   const fetchUser = async () => {
-    const result = await fetch(
+    const data = await fetch(
       `https://jsonplaceholder.typicode.com/users/${userId}`
     );
-    const data = result.json();
+
     return data;
   };
-  return <Posts user={userId} />;
+  return <Posts user={user} />;
 };
 
 export default User;

@@ -1,16 +1,21 @@
-import Login from "./components/Login/Login";
-import User from "./components/User/User";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { useState } from "react";
+import { UserContext } from "./components/UserContext";
+import Login from "./components/Login/Login";
+import User from "./components/User/User";
+import Logout from "./components/LogOut/Logout";
 
 function App() {
   const [user, setUser] = useState();
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Login setUser={setUser} />} />
-        <Route path="/user" element={<User user={user} />} />
-      </Routes>
+      <UserContext.Provider value={{ user, setUser }}>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/user" element={<User />} />
+          <Route path="/logout" element={<Logout />} />
+        </Routes>
+      </UserContext.Provider>
     </Router>
   );
 }
