@@ -35,20 +35,25 @@ const Posts = (props) => {
     msg = "no posts to show";
   }
   return (
-    <PostContainer>
+    <>
       <UserName> Welcome {user.name}</UserName>
-      <NewPost openPost={openPost} />
-      <Logout />
+      
+      <PostContainer>
+        
+        <Logout />
+        
+        {"  "}
+        {posts.length > 0 ? posts.map((post) => <Post post={post} />) : msg}
+      </PostContainer>
       <PostBtn
-        onClick={() => {
-          setOpenPost((prev) => !prev);
-        }}
-      >
-        New Post
-      </PostBtn>
-      {"  "}
-      {posts.length > 0 ? posts.map((post) => <Post post={post} />) : msg}
-    </PostContainer>
+          onClick={() => {
+            setOpenPost((prev) => !prev);
+          }}
+        >
+          +
+        </PostBtn>
+      <NewPost openPost={openPost} />
+    </>
   );
 };
 

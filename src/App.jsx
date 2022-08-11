@@ -7,9 +7,10 @@ import Logout from "./components/LogOut/Logout";
 
 function App() {
   const [user, setUser] = useState();
+  const [commentsL,setCommentsL] = useState()
   return (
     <Router>
-      <UserContext.Provider value={{ user, setUser }}>
+      <UserContext.Provider value={{ user, setUser,commentsL,setCommentsL }}>
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/user" element={<User />} />

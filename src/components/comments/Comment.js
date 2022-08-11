@@ -5,7 +5,6 @@ const Comment = (userComment) => {
   return (
     <CommentBody>
       <CommentName>
-        <span>User </span>
         {comment.email}
       </CommentName>
       {comment.body}

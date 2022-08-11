@@ -1,12 +1,13 @@
 import styled from "styled-components";
 const LoginForm = styled.form`
+background:white;
   max-width: 500px;
   margin: 30px auto;
   overflow-x: none;
   min-height: 300px;
   border: 1px solid steelblue;
   padding: 30px;
-  border-radius: 5px;
+  border-radius: 15%;
 `;
 const LoginHeader = styled.h1`
   font-size: 30px;

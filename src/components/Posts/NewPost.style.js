@@ -3,13 +3,15 @@ import styled from "styled-components";
 const NewPostCont = styled.form(
   ({ openPost }) => `
   max-width: 500px;
-  margin: 30px auto;
-  min-height: 350px;
   border: 1px solid steelblue;
   padding: 30px;
   border-radius: 5px;
-  display: ${openPost ? "flex" : "none"};
   flex-direction: column;
+  display: ${openPost ? "flex" : "none"};
+  box-shadow: 10px 10px 5px #aaaaaa;
+  border-radius: 5%; 
+  background-color:white;
+  margin-left:69rem
 `
 );
 
@@ -44,20 +46,20 @@ const BodyContainer = styled.textarea`
 
 const NewPostBtn = styled.button`
 display: inline-block;
-   background: #000;
+   background: steelblue;
    color: #fff;
    border: none;
    padding: 10px 20px;
-   margin-left: 0.4rem;
+   margin-left: 1.1rem;
    border-radius: 5px;
    cursor: pointer;
    -webkit-text-decoration: none;
    text-decoration: none;
    font-size: 15px;
    font-family: inherit;
-   position: absolute;
    right: 41rem;
    top: 28.5rem;
+   
 }
  :hover {
    background-color: white;
