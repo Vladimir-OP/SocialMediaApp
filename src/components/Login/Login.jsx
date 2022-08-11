@@ -14,19 +14,22 @@ const Login = () => {
   const { setUser } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
+
   const onSubmit = async (e) => {
     e.preventDefault();
-
-    const users = await (
-      await fetch("https://jsonplaceholder.typicode.com/users")
-    ).json();
-
-    const user = await users.find((e) => e.email == email);
-    setUser(user);
-    if (user) {
-      navigate("/user");
+    try {
+      const user = await (
+        await fetch(`https://jsonplaceholder.typicode.com/users?email=${email}`)
+      ).json();
+      setUser(user[0]);
+      if (user[0]) {
+        navigate("/user");
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
+
   return (
     <LoginForm onSubmit={onSubmit}>
       <LoginHeader>Login</LoginHeader>

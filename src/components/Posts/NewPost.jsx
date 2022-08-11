@@ -1,5 +1,5 @@
 import { UserContext } from "../UserContext";
-import { useContext, useState } from "react";
+import { useState, useEffect } from "react";
 
 import {
   NewPostCont,
@@ -13,8 +13,15 @@ import {
 const NewPost = (props) => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-  const { user } = useContext(UserContext);
+  const [user, setUser] = useState({});
   const openPost = props.openPost;
+
+  useEffect(() => {
+    const userL = JSON.parse(localStorage.getItem("user"));
+    if (userL) {
+      setUser(userL);
+    }
+  }, []);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -39,7 +46,7 @@ const NewPost = (props) => {
         name="title"
         required
         onChange={(e) => setTitle(e.target.value)}
-      ></TitleInputContainer>
+      />
       <BodyContainer
         type="text"
         name="title"

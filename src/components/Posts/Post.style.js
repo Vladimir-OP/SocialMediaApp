@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const PostContainer = styled.div`
   margin: 5px;
-  padding: 10px 20px;
+  padding: 0.625rem 1.25rem;
   width: 50rem;
   display: flex;
   flex-wrap: wrap;
@@ -50,7 +50,7 @@ const CommentBtn = styled.i`
 `;
 
 const CommentCount = styled.span`
-  width: 1r;
+  width: 1rem;
 `;
 
 export { CommentCount, PostContainer, PostTitle, PostBody, CommentBtn };

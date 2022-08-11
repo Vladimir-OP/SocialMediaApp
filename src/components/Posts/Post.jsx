@@ -7,9 +7,11 @@ import {
   CommentBtn,
   CommentCount,
 } from "./Post.style";
+
 import { useState, useContext } from "react";
 import Comments from "../comments/Comments";
 import { UserContext } from "../UserContext";
+
 const Post = ({ post }) => {
   const { commentsL } = useContext(UserContext);
   const [openComments, setOpenComments] = useState(false);

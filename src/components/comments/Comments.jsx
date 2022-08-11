@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useMemo } from "react";
 import { CommentsCont } from "./comments.style";
 import Comment from "./Comment";
 import { UserContext } from "../UserContext";
@@ -9,22 +9,26 @@ const Comments = ({ postID }) => {
   const { setCommentsL } = useContext(UserContext);
   useEffect(() => {
     (async () => {
-      const userComments = await fetchComments();
+      const userComments = await fetchComments;
       setComments(userComments);
     })();
   }, []);
 
-  const fetchComments = async () => {
-    const result = await fetch(
-      `https://jsonplaceholder.typicode.com/comments?postId=${postID}`
-    );
-    setcommentStatus(true);
-    const data = await result.json();
-    if (data) {
-      setcommentStatus(false);
+  const fetchComments = useMemo(async () => {
+    try {
+      const result = await fetch(
+        `https://jsonplaceholder.typicode.com/comments?postId=${postID}`
+      );
+      setcommentStatus(true);
+      const data = await result.json();
+      if (data) {
+        setcommentStatus(false);
+      }
+      return data;
+    } catch (error) {
+      console.log(error);
     }
-    return data;
-  };
+  }, [postID]);
   let msg = "no comments to show";
   if (commentStatus) {
     msg = "comments loading";

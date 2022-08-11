@@ -2,11 +2,11 @@ import styled from "styled-components";
 const LoginForm = styled.form`
   background: white;
   max-width: 500px;
-  margin: 30px auto;
+  margin: 1.8rem auto;
   overflow-x: none;
   min-height: 300px;
   border: 1px solid steelblue;
-  padding: 30px;
+  padding: 1.875rem;
   border-radius: 15%;
 `;
 const LoginHeader = styled.h1`
@@ -21,7 +21,7 @@ const LoginInputName = styled.label`
 
 const InputContainer = styled.input`
   width: 100%;
-  height: 40px;
+  height: 2.5rem;
   margin: 5px;
   padding: 3px;
   font-size: 17px;
@@ -32,7 +32,7 @@ const LoginBtn = styled.button`
   background: steelblue;
   color: #fff;
   border: none;
-  padding: 10px 20px;
+  padding: 0.625rem 1.25rem;
   margin-top: 4rem;
   margin-left: 0.4rem;
   border-radius: 5px;
