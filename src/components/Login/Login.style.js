@@ -1,6 +1,6 @@
 import styled from "styled-components";
 const LoginForm = styled.form`
-background:white;
+  background: white;
   max-width: 500px;
   margin: 30px auto;
   overflow-x: none;
@@ -10,10 +10,12 @@ background:white;
   border-radius: 15%;
 `;
 const LoginHeader = styled.h1`
+  color: steelblue;
   font-size: 30px;
 `;
 
 const LoginInputName = styled.label`
+  color: steelblue;
   display: block;
 `;
 
@@ -27,7 +29,7 @@ const InputContainer = styled.input`
 
 const LoginBtn = styled.button`
   display: inline-block;
-  background: #000;
+  background: steelblue;
   color: #fff;
   border: none;
   padding: 10px 20px;

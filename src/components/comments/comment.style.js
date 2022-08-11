@@ -7,8 +7,7 @@ const CommentBody = styled.p`
 `;
 
 const CommentName = styled.h4`
-margin-right:2rem;
+  margin-right: 2rem;
   color: black !important;
-  
 `;
 export { CommentBody, CommentName };

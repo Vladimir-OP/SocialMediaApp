@@ -4,9 +4,7 @@ const Comment = (userComment) => {
   const comment = userComment.post;
   return (
     <CommentBody>
-      <CommentName>
-        {comment.email}
-      </CommentName>
+      <CommentName>{comment.email}</CommentName>
       {comment.body}
     </CommentBody>
   );

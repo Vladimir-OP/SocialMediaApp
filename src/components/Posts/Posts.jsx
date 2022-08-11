@@ -37,21 +37,20 @@ const Posts = (props) => {
   return (
     <>
       <UserName> Welcome {user.name}</UserName>
-      
+
       <PostContainer>
-        
         <Logout />
-        
+
         {"  "}
         {posts.length > 0 ? posts.map((post) => <Post post={post} />) : msg}
       </PostContainer>
       <PostBtn
-          onClick={() => {
-            setOpenPost((prev) => !prev);
-          }}
-        >
-          +
-        </PostBtn>
+        onClick={() => {
+          setOpenPost((prev) => !prev);
+        }}
+      >
+        +
+      </PostBtn>
       <NewPost openPost={openPost} />
     </>
   );

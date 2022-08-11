@@ -7,11 +7,12 @@ const Logout = () => {
   const navigate = useNavigate();
 
   return (
-    <LogoutBtn   onClick={() => {
-      navigate("/");
-    }}>
-     <FontAwesomeIcon icon={faSignOut}/>
-    
+    <LogoutBtn
+      onClick={() => {
+        navigate("/");
+      }}
+    >
+      <FontAwesomeIcon icon={faSignOut} />
     </LogoutBtn>
   );
 };

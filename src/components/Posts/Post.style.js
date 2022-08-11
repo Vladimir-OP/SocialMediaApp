@@ -13,7 +13,7 @@ const PostContainer = styled.div`
     flex-wrap: unset;
     flex-direction: column;
     border-radius: 5%;
-    
+
     background-color: white;
     border: unset;
     box-shadow: 10px 10px 5px #aaaaaa;
@@ -34,24 +34,23 @@ const PostContainer = styled.div`
 
 const PostTitle = styled.h4`
   color: rgb(42, 98, 143);
-  margin-left:2rem
+  margin-left: 2rem;
 `;
-const PostBody = styled.h6`
-`;
+const PostBody = styled.h6``;
 const CommentBtn = styled.i`
-display:flex;
-width: 1rem;
-position: relative;
-cursor: pointer;
-color: gray;
-left: 17rem;
+  display: flex;
+  width: 1rem;
+  position: relative;
+  cursor: pointer;
+  color: gray;
+  left: 17rem;
   :hover {
     color: steelblue;
   }
 `;
 
 const CommentCount = styled.span`
-width:1r
+  width: 1r;
 `;
 
-export {CommentCount, PostContainer, PostTitle, PostBody, CommentBtn };
+export { CommentCount, PostContainer, PostTitle, PostBody, CommentBtn };

@@ -25,7 +25,7 @@ display: inline-block;
    border: 1px solid steelblue;
 `;
 const PostsCont = styled.div`
-background-color: white;
+  background-color: white;
   max-width: 500px;
   margin: 30px auto;
   overflow-x: none;
