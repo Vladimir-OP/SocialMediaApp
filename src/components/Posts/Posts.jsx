@@ -1,12 +1,13 @@
 import { useEffect, useState, useMemo } from "react";
+import { api } from "../../shared/api";
+import Logout from "../LogOut/Logout";
+import NewPost from "./NewPost";
 import Post from "./Post";
 import { PostContainer } from "./Post.style";
-import { UserName } from "./Posts.style";
-import Logout from "../LogOut/Logout";
-import { PostBtn } from "./Posts.style";
-import NewPost from "./NewPost";
+import { UserName, PostBtn } from "./Posts.style";
 
 const Posts = () => {
+  const [msg, setMsg] = useState("posts are loading");
   const [posts, setPosts] = useState([]);
   const [postStatus, setpostStatus] = useState(false);
   const [openPost, setOpenPost] = useState(false);
@@ -14,20 +15,24 @@ const Posts = () => {
 
   useEffect(() => {
     (async () => {
-      const userL = await JSON.parse(await localStorage.getItem("user"));
-      if (userL) {
-        setUser(userL);
+      const userInLocalStrg = await JSON.parse(localStorage.getItem("user"));
+      if (userInLocalStrg) {
+        setUser(userInLocalStrg);
       }
-      const userPosts = await fetchPosts;
+
+      await fetchPosts;
+
+      if (!postStatus) {
+        setMsg("no posts to show");
+      }
     })();
   }, []);
 
   const fetchPosts = useMemo(async () => {
     try {
-      const result = await fetch(
-        `https://jsonplaceholder.typicode.com/posts?userId=${user.id}`
-      );
-      const data = await result.json();
+      const result = await api("GET", "posts", user.id, "userId");
+      const data = result.data;
+
       if (data) {
         setpostStatus((prev) => !prev);
       }
@@ -37,15 +42,9 @@ const Posts = () => {
       console.log(error);
     }
   }, [user]);
-
-  let msg = "posts are loading";
-  if (postStatus) {
-    msg = "no posts to show";
-  }
   return (
     <>
       <UserName> Welcome {user.name}</UserName>
-
       <PostContainer>
         <Logout />
         {posts.length > 0 ? posts.map((post) => <Post post={post} />) : msg}

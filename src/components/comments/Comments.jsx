@@ -1,45 +1,53 @@
 import { useEffect, useState, useContext, useMemo } from "react";
+import { UserContext } from "../UserContext";
+import { api } from "../../shared/api";
 import { CommentsCont } from "./comments.style";
 import Comment from "./Comment";
-import { UserContext } from "../UserContext";
 
-const Comments = ({ postID }) => {
+const Comments = ({ postID, show }) => {
+  const { setCommentsCount } = useContext(UserContext);
+  const [msg, setMsg] = useState("no comments to show");
   const [comments, setComments] = useState([]);
   const [commentStatus, setcommentStatus] = useState(true);
-  const { setCommentsL } = useContext(UserContext);
+
   useEffect(() => {
+    if (commentStatus) {
+      setMsg("comments are loading");
+    }
+
     (async () => {
-      const userComments = await fetchComments;
-      setComments(userComments);
+      await fetchComments;
     })();
   }, []);
 
   const fetchComments = useMemo(async () => {
     try {
-      const result = await fetch(
-        `https://jsonplaceholder.typicode.com/comments?postId=${postID}`
-      );
-      setcommentStatus(true);
-      const data = await result.json();
+      const result = await api("GET", "comments", postID, "postId");
+      const data = result.data;
+
       if (data) {
         setcommentStatus(false);
       }
+
+      setComments(data);
       return data;
     } catch (error) {
       console.log(error);
     }
   }, [postID]);
-  let msg = "no comments to show";
-  if (commentStatus) {
-    msg = "comments loading";
-  }
-  setCommentsL(comments.length);
+
+  setCommentsCount(comments.length);
+
   return (
-    <CommentsCont>
-      {comments.length > 0
-        ? comments.map((post) => <Comment post={post} />)
-        : msg}
-    </CommentsCont>
+    <>
+      {show && (
+        <CommentsCont>
+          {comments.length > 0
+            ? comments.map((post) => <Comment post={post} />)
+            : msg}
+        </CommentsCont>
+      )}
+    </>
   );
 };
 

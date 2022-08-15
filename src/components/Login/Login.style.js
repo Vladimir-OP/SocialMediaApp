@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 const LoginForm = styled.form`
   background: white;
   max-width: 500px;
@@ -9,6 +10,7 @@ const LoginForm = styled.form`
   padding: 1.875rem;
   border-radius: 15%;
 `;
+
 const LoginHeader = styled.h1`
   color: steelblue;
   font-size: 30px;
@@ -40,6 +42,7 @@ const LoginBtn = styled.button`
   text-decoration: none;
   font-size: 15px;
   font-family: inherit;
+
   :hover {
     background-color: white;
     color: black;
@@ -50,10 +53,10 @@ const LoginBtn = styled.button`
 
 const WrongEmail = styled.p(
   ({ showWrongEmail }) => `
-display:${showWrongEmail ? "block" : "none"};
-color:red;
-margin:unset
-`
+    display:${showWrongEmail ? "block" : "none"};
+    color:red;
+    margin:unset
+  `
 );
 
 export {

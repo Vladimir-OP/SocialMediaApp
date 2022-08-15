@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 const PostBtn = styled.button`
   display: inline-block;
   background: #007cfc;

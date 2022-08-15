@@ -10,4 +10,5 @@ const CommentName = styled.h4`
   margin-right: 2rem;
   color: black !important;
 `;
+
 export { CommentBody, CommentName };

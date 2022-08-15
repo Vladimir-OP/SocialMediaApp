@@ -1,37 +1,26 @@
 import { useEffect, useContext } from "react";
-import Posts from "../Posts/Posts";
 import { UserContext } from "../UserContext";
+import { api } from "../../shared/api";
+import Posts from "../Posts/Posts";
 
 const User = () => {
   const { user } = useContext(UserContext);
-  const userId = user.id;
+  const { id: userId } = user;
 
   useEffect(() => {
     (async () => {
-      const userdata = await fetchUser();
+      try {
+        const data = await api("GET", "users", userId, "id");
+        return data;
+      } catch (error) {
+        console.log(error);
+      }
     })();
-  }, []);
 
-  useEffect(() => {
     localStorage.setItem("user", JSON.stringify(user));
   }, []);
 
-  const fetchUser = async () => {
-    try {
-      const data = await fetch(
-        `https://jsonplaceholder.typicode.com/users/${userId}`
-      );
-
-      return data;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  return (
-    <>
-      <Posts />
-    </>
-  );
+  return <Posts />;
 };
 
 export default User;

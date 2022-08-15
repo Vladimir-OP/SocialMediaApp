@@ -45,50 +45,50 @@ const BodyContainer = styled.textarea`
 `;
 
 const NewPostBtn = styled.button`
-   display: inline-block;
-   background: steelblue;
-   color: #fff;
-   border: none;
-   padding: 0.625rem 1.25rem;
-   margin-left: 1.1rem;
-   border-radius: 5px;
-   cursor: pointer;
-   -webkit-text-decoration: none;
-   text-decoration: none;
-   font-size: 0.9rem;
-   font-family: inherit;
-   right: 2.56rem;
-   top: 28.5rem;
+  display: inline-block;
+  background: steelblue;
+  color: #fff;
+  border: none;
+  padding: 0.625rem 1.25rem;
+  margin-left: 1.1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-family: inherit;
+  right: 2.56rem;
+  top: 28.5rem;
    
-}
- :hover {
-   background-color: white;
-   color: black;
-   border: 1px solid steelblue;
+  :hover {
+    background-color: white;
+    color: black;
+    border: 1px solid steelblue;
+  }
 `;
 
 const MyPostsBtn = styled.button`
-   display: inline-block;
-   background: #000;
-   color: #fff;
-   border: none;
-   padding: 0.625rem 1.25rem;
-   margin-left: 0.4rem;
-   border-radius: 5px;
-   cursor: pointer;
-   -webkit-text-decoration: none;
-   text-decoration: none;
-   font-size: 15px;
-   font-family: inherit;
-   position: absolute;
-   right: 66rem;
-   top: 24.5rem;
-}
- :hover {
-   background-color: white;
-   color: black;
-   border: 1px solid steelblue;
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 0.625rem 1.25rem;
+  margin-left: 0.4rem;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: inherit;
+  position: absolute;
+  right: 66rem;
+  top: 24.5rem;
+
+  :hover {
+    background-color: white;
+    color: black;
+    border: 1px solid steelblue;
+  }
 `;
+
 export {
   TitleInputContainer,
   MyPostsBtn,

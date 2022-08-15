@@ -1,5 +1,8 @@
+import { useState, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment } from "@fortawesome/free-solid-svg-icons";
+import { UserContext } from "../UserContext";
+import Comments from "../comments/Comments";
 import {
   PostContainer,
   PostTitle,
@@ -8,12 +11,8 @@ import {
   CommentCount,
 } from "./Post.style";
 
-import { useState, useContext } from "react";
-import Comments from "../comments/Comments";
-import { UserContext } from "../UserContext";
-
 const Post = ({ post }) => {
-  const { commentsL } = useContext(UserContext);
+  const { commentsCount } = useContext(UserContext);
   const [openComments, setOpenComments] = useState(false);
 
   return (
@@ -24,12 +23,11 @@ const Post = ({ post }) => {
         }}
       >
         <FontAwesomeIcon icon={faComment} />
-        <CommentCount>{commentsL}</CommentCount>
+        <CommentCount>{commentsCount}</CommentCount>
       </CommentBtn>
-
       <PostTitle>{post.title}</PostTitle>
       <PostBody>{post.body}</PostBody>
-      {openComments && <Comments postID={post.id} />}
+      <Comments postID={post.id} show={openComments} />
     </PostContainer>
   );
 };

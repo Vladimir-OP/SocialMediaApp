@@ -9,8 +9,8 @@ const Logout = () => {
   return (
     <LogoutBtn
       onClick={() => {
-        navigate("/");
         localStorage.removeItem("user");
+        navigate("/");
       }}
     >
       <FontAwesomeIcon icon={faSignOut} />

@@ -6,15 +6,15 @@ import Logout from "./components/LogOut/Logout";
 
 function App() {
   return (
-    <Router>
-      <UserContextProvider>
+    <UserContextProvider>
+      <Router>
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/user" element={<User />} />
           <Route path="/logout" element={<Logout />} />
         </Routes>
-      </UserContextProvider>
-    </Router>
+      </Router>
+    </UserContextProvider>
   );
 }
 

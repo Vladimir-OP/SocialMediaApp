@@ -13,19 +13,21 @@ const PostContainer = styled.div`
     flex-wrap: unset;
     flex-direction: column;
     border-radius: 5%;
-
     background-color: white;
     border: unset;
     box-shadow: 10px 10px 5px #aaaaaa;
     width: 19rem;
+
     > h3 {
       display: flex;
     }
+
     > p {
       font-color: black;
       font-size: 11px;
       border-bottom: 1px solid black;
     }
+
     > div {
       font-size: small;
     }
@@ -36,7 +38,9 @@ const PostTitle = styled.h4`
   color: rgb(42, 98, 143);
   margin-left: 2rem;
 `;
+
 const PostBody = styled.h6``;
+
 const CommentBtn = styled.i`
   display: flex;
   width: 1rem;
@@ -44,6 +48,7 @@ const CommentBtn = styled.i`
   cursor: pointer;
   color: gray;
   left: 17rem;
+  
   :hover {
     color: steelblue;
   }
