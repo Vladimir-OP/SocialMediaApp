@@ -50,7 +50,7 @@ const LoginBtn = styled.button`
 
 const WrongEmail = styled.p(
   ({ showWrongEmail }) => `
- display:${showWrongEmail ? "block" : "none"};
+display:${showWrongEmail ? "block" : "none"};
 color:red;
 margin:unset
 `
