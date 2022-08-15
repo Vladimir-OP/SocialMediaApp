@@ -48,4 +48,19 @@ const LoginBtn = styled.button`
   }
 `;
 
-export { LoginHeader, LoginForm, LoginInputName, InputContainer, LoginBtn };
+const WrongEmail = styled.p(
+  ({ showWrongEmail }) => `
+ display:${showWrongEmail ? "block" : "none"};
+color:red;
+margin:unset
+`
+);
+
+export {
+  WrongEmail,
+  LoginHeader,
+  LoginForm,
+  LoginInputName,
+  InputContainer,
+  LoginBtn,
+};

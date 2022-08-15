@@ -8,11 +8,13 @@ import {
   LoginInputName,
   InputContainer,
   LoginBtn,
+  WrongEmail
 } from "./Login.style";
 
 const Login = () => {
   const { setUser } = useContext(UserContext);
   const [email, setEmail] = useState("");
+  const [showWrongEmail,setShowWrongEmail] = useState(false)
   const navigate = useNavigate();
 
   const onSubmit = async (e) => {
@@ -24,8 +26,11 @@ const Login = () => {
       setUser(user[0]);
       if (user[0]) {
         navigate("/user");
+      }else{
+        setShowWrongEmail(prev => !prev)
       }
     } catch (error) {
+      
       console.log(error);
     }
   };
@@ -40,6 +45,7 @@ const Login = () => {
         required
         onChange={(e) => setEmail(e.target.value)}
       />
+      <WrongEmail showWrongEmail = {showWrongEmail}>wrong email please try again</WrongEmail>
       <LoginBtn type="submit">Login</LoginBtn>
     </LoginForm>
   );

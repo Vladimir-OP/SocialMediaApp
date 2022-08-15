@@ -41,7 +41,6 @@ const Posts = () => {
   let msg = "posts are loading";
   if (postStatus) {
     msg = "no posts to show";
-    console.log(33333333, posts);
   }
   return (
     <>
