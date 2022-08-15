@@ -25,6 +25,7 @@ const NewPost = (props) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    try {
     await fetch("https://jsonplaceholder.typicode.com/", {
       method: "POST",
       body: JSON.stringify({
@@ -36,6 +37,10 @@ const NewPost = (props) => {
         "Content-type": "application/json; charset=UTF-8",
       },
     });
+  }
+  catch (error){
+    console.log(error);
+  }
   };
   return (
     <NewPostCont openPost={openPost} onSubmit={onSubmit}>
