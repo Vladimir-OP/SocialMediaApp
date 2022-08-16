@@ -1,17 +1,18 @@
 import styled from "styled-components";
 
 const PostBtn = styled.button`
+  z-index: 120;
   display: inline-block;
   background: #007cfc;
   color: #fff;
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  text-decoration: none;
   font-size: 20px;
   font-family: inherit;
-  position: absolute;
-  right: 5rem;
+  position: fixed;
+  bottom: 1rem;
+  left: 114rem;
   width: 45px;
   height: 45px;
 
@@ -36,7 +37,7 @@ const PostsCont = styled.div`
 const UserName = styled.h1`
   color: rgb(42, 98, 143);
   width: 25rem;
-  margin-left: 5rem;
+  margin-left: 3rem;
 `;
 
 export { PostsCont, UserName, PostBtn };

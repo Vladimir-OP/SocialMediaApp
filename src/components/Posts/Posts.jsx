@@ -44,11 +44,9 @@ const Posts = () => {
   }, [user]);
   return (
     <>
+      <NewPost openPost={openPost} />
+
       <UserName> Welcome {user.name}</UserName>
-      <PostContainer>
-        <Logout />
-        {posts.length > 0 ? posts.map((post) => <Post post={post} />) : msg}
-      </PostContainer>
       <PostBtn
         onClick={() => {
           setOpenPost((prev) => !prev);
@@ -56,7 +54,10 @@ const Posts = () => {
       >
         +
       </PostBtn>
-      <NewPost openPost={openPost} />
+      <PostContainer>
+        <Logout />
+        {posts.length > 0 ? posts.map((post) => <Post post={post} />) : msg}
+      </PostContainer>
     </>
   );
 };

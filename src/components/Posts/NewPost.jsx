@@ -6,6 +6,7 @@ import {
   TitleInputContainer,
   BodyContainer,
   NewPostBtn,
+  CreatePostCont,
 } from "./NewPost.style";
 
 const NewPost = ({ openPost }) => {
@@ -37,23 +38,25 @@ const NewPost = ({ openPost }) => {
   };
 
   return (
-    <NewPostCont openPost={openPost} onSubmit={onSubmit}>
-      <NewPostHeader>Create New Post</NewPostHeader>
-      <InputName>Post Title</InputName>
-      <TitleInputContainer
-        type="text"
-        name="title"
-        required
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <BodyContainer
-        type="text"
-        name="title"
-        required
-        onChange={(e) => setBody(e.target.value)}
-      />
-      <NewPostBtn type="submit">Post</NewPostBtn>
-    </NewPostCont>
+    <CreatePostCont openPost={openPost}>
+      <NewPostCont onSubmit={onSubmit}>
+        <NewPostHeader>Create New Post</NewPostHeader>
+        <InputName>Title</InputName>
+        <TitleInputContainer
+          type="text"
+          name="title"
+          required
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <BodyContainer
+          type="text"
+          name="title"
+          required
+          onChange={(e) => setBody(e.target.value)}
+        />
+        <NewPostBtn type="submit">Post</NewPostBtn>
+      </NewPostCont>
+    </CreatePostCont>
   );
 };
 
