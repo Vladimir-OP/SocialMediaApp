@@ -1,30 +1,40 @@
-import { useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
-
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../UserContext";
+import { api } from "../../shared/api";
 import {
   LoginForm,
   LoginHeader,
   LoginInputName,
   InputContainer,
   LoginBtn,
+  WrongEmail,
 } from "./Login.style";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
   const navigate = useNavigate();
+  const { setUser } = useContext(UserContext);
+  const [email, setEmail] = useState("");
+  const [showWrongEmail, setShowWrongEmail] = useState(false);
+
   const onSubmit = async (e) => {
     e.preventDefault();
+    try {
+      let user = await api("GET", "users", email, "email");
 
-    const users = await (
-      await fetch("https://jsonplaceholder.typicode.com/users")
-    ).json();
+      user = user.data;
+      setUser(user[0]);
 
-    const User = await users.find(e => e == email);
-    console.log(User,11111111111111);
-    if (User) {
-      navigate("/register");
+      if (user[0]) {
+        navigate("/user");
+      } else {
+        setShowWrongEmail((prev) => !prev);
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
+
   return (
     <LoginForm onSubmit={onSubmit}>
       <LoginHeader>Login</LoginHeader>
@@ -32,9 +42,13 @@ const Login = () => {
       <InputContainer
         type="email"
         name="email"
+        placeholder="john.albert@example.com"
         required
         onChange={(e) => setEmail(e.target.value)}
       />
+      <WrongEmail showWrongEmail={showWrongEmail}>
+        wrong email please try again
+      </WrongEmail>
       <LoginBtn type="submit">Login</LoginBtn>
     </LoginForm>
   );
