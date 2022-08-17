@@ -8,16 +8,16 @@ const PostContainer = styled.div`
   flex-wrap: wrap;
   width: 100%;
   height: fit-content;
-  min-height: 13rem;
+  min-height: 10rem;
   max-height: 50rem;
 
   > div {
     flex-wrap: unset;
     flex-direction: column;
-    border-radius: 5%;
+    border-radius: 0.75rem;
     background-color: white;
     border: unset;
-    box-shadow: 10px 10px 25px #aaaaaa;
+    box-shadow: 1px 1px 16px #e3e3e3;
     width: 19rem;
 
     > h3 {
@@ -32,13 +32,22 @@ const PostContainer = styled.div`
 
     > div {
       font-size: small;
+      box-shadow: unset;
     }
   }
+`;
+const PostHeader = styled.div`
+  align-items: flex-start;
+  width: 20rem !important;
+  display: flex;
+  flex-direction: row !important;
+  margin-top: 1rem;
 `;
 
 const PostTitle = styled.h4`
   color: rgb(42, 98, 143);
-  margin-left: 2rem;
+  margin: unset;
+  width: 17rem;
 `;
 
 const PostBody = styled.h6``;
@@ -46,7 +55,6 @@ const PostBody = styled.h6``;
 const CommentBtn = styled.i`
   display: flex;
   width: 1rem;
-  position: relative;
   cursor: pointer;
   color: gray;
   left: 17rem;
@@ -58,6 +66,15 @@ const CommentBtn = styled.i`
 
 const CommentCount = styled.span`
   width: 1rem;
+  display: flex;
+  margin-left: 0.85rem;
 `;
 
-export { CommentCount, PostContainer, PostTitle, PostBody, CommentBtn };
+export {
+  CommentCount,
+  PostHeader,
+  PostContainer,
+  PostTitle,
+  PostBody,
+  CommentBtn,
+};

@@ -42,6 +42,7 @@ const Login = () => {
       <InputContainer
         type="email"
         name="email"
+        placeholder="john.albert@example.com"
         required
         onChange={(e) => setEmail(e.target.value)}
       />

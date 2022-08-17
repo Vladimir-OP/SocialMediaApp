@@ -41,7 +41,6 @@ const Comments = ({ postID, show }) => {
   return (
     <>
       {show && (
-        
         <CommentsCont>
           {comments.length > 0
             ? comments.map((post) => <Comment post={post} />)

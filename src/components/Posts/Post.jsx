@@ -5,6 +5,7 @@ import { UserContext } from "../UserContext";
 import Comments from "../comments/Comments";
 import {
   PostContainer,
+  PostHeader,
   PostTitle,
   PostBody,
   CommentBtn,
@@ -17,15 +18,19 @@ const Post = ({ post }) => {
 
   return (
     <PostContainer>
-      <CommentBtn
-        onClick={() => {
-          setOpenComments((prev) => !prev);
-        }}
-      >
-        <FontAwesomeIcon icon={faComment} />
-        <CommentCount>{commentsCount}</CommentCount>
-      </CommentBtn>
-      <PostTitle>{post.title}</PostTitle>
+      <PostHeader>
+        <PostTitle>{post.title}</PostTitle>
+        <CommentBtn
+          onClick={() => {
+            setOpenComments((prev) => !prev);
+          }}
+        >
+          <CommentCount>
+            <FontAwesomeIcon icon={faComment} />
+            {commentsCount}
+          </CommentCount>
+        </CommentBtn>
+      </PostHeader>
       <PostBody>{post.body}</PostBody>
       <Comments postID={post.id} show={openComments} />
     </PostContainer>

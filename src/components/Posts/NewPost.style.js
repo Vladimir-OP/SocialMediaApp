@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const CreatePostCont = styled.div(
   ({ openPost }) => `
+overflow: hidden;
 display:${openPost ? "block" : "none"};
 position:absolute;
 width:100%;
@@ -10,6 +11,7 @@ background-color:rgb(60 82 113 / 70%);
 z-index:100;
 `
 );
+
 const NewPostCont = styled.form`
   align-items: center;
   max-width: 31rem;
@@ -18,9 +20,10 @@ const NewPostCont = styled.form`
   border-radius: 5px;
   flex-direction: column;
   display: flex;
-  border-radius: 5%;
+  border-radius: 0.75rem;
   background-color: white;
   margin-left: 41rem;
+  overflow: hidden;
 `;
 
 const NewPostHeader = styled.h1`
@@ -58,7 +61,6 @@ const NewPostBtn = styled.button`
   display: inline-block;
   background: steelblue;
   color: #fff;
-  border: none;
   padding: 0.625rem 1.25rem;
   border-radius: 5px;
   cursor: pointer;
@@ -68,11 +70,11 @@ const NewPostBtn = styled.button`
   right: 2.56rem;
   top: 28.5rem;
   width: 31.5rem;
+  border: 1px solid steelblue;
 
   :hover {
     background-color: white;
     color: black;
-    border: 1px solid steelblue;
   }
 `;
 

@@ -36,7 +36,7 @@ const PostsCont = styled.div`
 
 const UserName = styled.h1`
   color: rgb(42, 98, 143);
-  width: 25rem;
+  width: 30rem;
   margin-left: 3rem;
 `;
 
