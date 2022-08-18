@@ -7,13 +7,13 @@ const CommentBody = styled.p`
 `;
 
 const CommentName = styled.a(
-  ({ color }) => `
+  ({ iconColor }) => `
   font-size: 15px;
   color: white !important;
   border-radius: 50%;
   width: 45px;
   height: 45px;
-  background-color: ${color};
+  background-color: ${iconColor};
   display:flex;
   justify-content:center;
   margin-top: 0.8rem;

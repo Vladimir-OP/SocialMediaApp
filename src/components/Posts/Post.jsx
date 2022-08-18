@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment } from "@fortawesome/free-solid-svg-icons";
 import { UserContext } from "../UserContext";
@@ -12,8 +13,15 @@ import {
   CommentCount,
 } from "./Post.style";
 
+/** create a post and gives style to it
+ *
+ * @param {object} post
+ * @returns {component} Post component
+ */
 const Post = ({ post }) => {
+  // keep comments count
   const { commentsCount } = useContext(UserContext);
+  // keep boolean value and open comment section
   const [openComments, setOpenComments] = useState(false);
 
   return (
@@ -37,4 +45,10 @@ const Post = ({ post }) => {
   );
 };
 
+Post.propTypes = {
+  post: PropTypes.object,
+};
+Post.defaultProps = {
+  post: {},
+};
 export default Post;

@@ -3,6 +3,7 @@ import axios from "axios";
 axios.interceptors.request.use((value) => {
   value.headers = {
     "Content-Type": "application/json",
+    "Content-Type" :"image/png"
   };
   return value;
 });
