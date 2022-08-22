@@ -10,11 +10,11 @@ import {
   CreatePostCont,
 } from "./NewPost.style";
 /**
- *  create form for posting new Post and store that post in page
- * @param {boolean} openPost
- * @returns {component} NewPost component
+ *  Creates form for posting new Post and store that post in page
+ *  @param {boolean} openNewPost
+ *  @returns {component} NewPost component
  */
-const NewPost = ({ openPost }) => {
+const NewPost = ({ openNewPost }) => {
   // keep new post title
   const [title, setTitle] = useState("");
   // keep new post body
@@ -47,7 +47,7 @@ const NewPost = ({ openPost }) => {
   };
 
   return (
-    <CreatePostCont openPost={openPost}>
+    <CreatePostCont openNewPost={openNewPost}>
       <NewPostCont onSubmit={onSubmit}>
         <NewPostHeader>Create New Post</NewPostHeader>
         <InputName>Title</InputName>

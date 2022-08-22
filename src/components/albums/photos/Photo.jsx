@@ -8,9 +8,9 @@ import {
   BlackField,
 } from "./photo.style";
 /**
- * Creates single photo component
- * @param {object} photo
- * @returns  {component}
+ *  Creates single photo component
+ *  @param {object} photo
+ *  @returns  {component}
  */
 const Photo = ({ photo }) => {
   // keep boolean valu depends on mouse movement

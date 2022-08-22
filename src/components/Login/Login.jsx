@@ -12,7 +12,7 @@ import {
 } from "./Login.style";
 /**
  *  Login user and take user data from data base
- * @returns {component} Login component
+ *  @returns {component} Login component
  */
 const Login = () => {
   const navigate = useNavigate();
@@ -27,9 +27,8 @@ const Login = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      let user = await api("GET", "users", email, "email");
+      const { data: user } = await api("GET", "users", { email });
 
-      user = user.data;
       setUser(user[0]);
 
       // navigate user to the main page

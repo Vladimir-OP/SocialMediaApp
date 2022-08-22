@@ -13,14 +13,14 @@ import {
   CommentCount,
 } from "./Post.style";
 
-/** create a post and gives style to it
- *
- * @param {object} post
- * @returns {component} Post component
+/**
+ *  Creates a post and gives style to it
+ *  @param {object} post
+ *  @returns {component} Post component
  */
 const Post = ({ post }) => {
   // keep comments count
-  const { commentsCount } = useContext(UserContext);
+  const { comments } = useContext(UserContext);
   // keep boolean value and open comment section
   const [openComments, setOpenComments] = useState(false);
 
@@ -35,7 +35,7 @@ const Post = ({ post }) => {
         >
           <CommentCount>
             <FontAwesomeIcon icon={faComment} />
-            {commentsCount}
+            {comments.length}
           </CommentCount>
         </CommentBtn>
       </PostHeader>

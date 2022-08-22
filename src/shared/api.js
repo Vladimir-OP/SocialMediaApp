@@ -1,18 +1,13 @@
 import axios from "axios";
 
-axios.interceptors.request.use((value) => {
-  value.headers = {
-    "Content-Type": "application/json",
-    "Content-Type" :"image/png"
-  };
-  return value;
-});
-
-export const api = async (method, section, id, condition, data) => {
+export const api = async (method, endpoint, options = "", data) => {
+  const optionsKeys = Object.keys(options);
+  const optionsQuery =
+    options && optionsKeys.map((key) => `${key}=${options[key]}&`).join("");
   try {
     return await axios({
       method,
-      url: `https://jsonplaceholder.typicode.com/${section}?${condition}=${id}`,
+      url: `https://jsonplaceholder.typicode.com/${endpoint}?${optionsQuery}`,
       data,
     });
   } catch (error) {

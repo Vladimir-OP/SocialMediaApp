@@ -1,16 +1,16 @@
-import { useEffect, useContext, useState } from "react";
+import { useEffect, useContext } from "react";
 import { UserContext } from "../UserContext";
 import { api } from "../../shared/api";
 import Posts from "../Posts/Posts";
-
+import axios from "axios";
 import { UserName } from "../Posts/Posts.style";
 import { Container } from "./User.style";
 import Logout from "../LogOut/Logout";
 import Albums from "../albums/Albums";
 
 /**
- *  get information about user
- * @returns {component} User component
+ *  Get information about user
+ *  @returns {component} User component
  */
 const User = () => {
   // keep user information
@@ -22,7 +22,13 @@ const User = () => {
     (async () => {
       try {
         // fetch data from database
-        const data = await api("GET", "users", userId, "id");
+        const data = await api("GET", "users", { id: userId });
+        axios.interceptors.request.use((value) => {
+          value.headers = {
+            "Content-Type": "application/json",
+          };
+          return value;
+        });
         return data;
       } catch (error) {
         console.log(error);

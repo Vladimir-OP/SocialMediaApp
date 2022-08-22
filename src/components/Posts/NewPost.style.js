@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 const CreatePostCont = styled.div(
-  ({ openPost }) => `
+  ({ openNewPost }) => `
   left:0rem;
   overflow: hidden;
-  display: ${openPost ? "block" : "none"};
+  display: ${openNewPost ? "block" : "none"};
   position: absolute;
   top: 0;
   width: 100%;

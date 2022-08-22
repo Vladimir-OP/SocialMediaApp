@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 // context to share data realted to user
@@ -12,8 +12,10 @@ export const UserContext = createContext(null);
 const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState();
   const [openAlbum, setOpenAlbum] = useState(false);
-  const [commentsCount, setCommentsCount] = useState();
+  const [comments, setComments] = useState([]);
   const [album, setAlbum] = useState([]);
+
+
 
   return (
     <UserContext.Provider
@@ -24,8 +26,8 @@ const UserContextProvider = ({ children }) => {
         setOpenAlbum,
         user,
         setUser,
-        commentsCount,
-        setCommentsCount,
+        comments,
+        setComments,
       }}
     >
       {children}

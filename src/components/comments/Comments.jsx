@@ -2,22 +2,21 @@ import { useEffect, useState, useContext, useMemo } from "react";
 import { UserContext } from "../UserContext";
 import PropTypes from "prop-types";
 import { api } from "../../shared/api";
+import axios from "axios";
 import { CommentsCont } from "./comments.style";
 import Comment from "./Comment";
 
 /**
- * create comments list
- * @param {number} postID
- * @param {boolean} show
- * @returns {component} Comments component
+ *  Creates comments list
+ *  @param {number} postID
+ *  @param {boolean} show
+ *  @returns {component} Comments component
  */
 const Comments = ({ postID, show }) => {
-  // take comments count data from userContext
-  const { setCommentsCount } = useContext(UserContext);
   // keep message about comments loading status
   const [msg, setMsg] = useState("no comments to show");
   // keep comments data
-  const [comments, setComments] = useState([]);
+  const { comments, setComments } = useContext(UserContext);
   // set comments loading status
   const [commentStatus, setcommentStatus] = useState(true);
 
@@ -33,28 +32,29 @@ const Comments = ({ postID, show }) => {
   // get comments from DB
   const fetchComments = useMemo(async () => {
     try {
-      const result = await api("GET", "comments", postID, "postId");
-      const data = result.data;
+      const { data } = await api("GET", "comments", { postId: postID });
+      setComments(data);
 
       if (data) {
         setcommentStatus(false);
       }
-
-      setComments(data);
       return data;
     } catch (error) {
       console.log(error);
     }
+    axios.interceptors.request.use((value) => {
+      value.headers = {
+        "Content-Type": "application/json",
+      };
+      return value;
+    });
   }, [postID]);
-  // set comments count
-  setCommentsCount(comments.length);
-
   return (
     <>
       {show && (
         <CommentsCont>
           {comments.length > 0
-            ? comments.map((post) => <Comment post={post} />)
+            ? comments.map((post) => <Comment key={post.id} post={post} />)
             : msg}
         </CommentsCont>
       )}

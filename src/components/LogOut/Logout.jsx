@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOut } from "@fortawesome/free-solid-svg-icons";
 
 /**
- *  logout user
- * @returns {component} Logout component
+ *  Logout user
+ *  @returns {component} Logout component
  */
 const Logout = () => {
   const navigate = useNavigate();

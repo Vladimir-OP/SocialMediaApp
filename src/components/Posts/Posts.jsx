@@ -1,4 +1,5 @@
 import { useEffect, useState, useMemo, useContext } from "react";
+import axios from "axios";
 import { api } from "../../shared/api";
 import { UserContext } from "../UserContext";
 import NewPost from "./NewPost";
@@ -7,9 +8,8 @@ import { PostContainer } from "./Post.style";
 import { PostBtn, PostsContainer } from "./Posts.style";
 
 /**
- * Creates Posts list
- *
- * @returns {component} Posts component
+ *  Creates Posts list
+ *  @returns {component} Posts component
  */
 
 const Posts = () => {
@@ -20,7 +20,7 @@ const Posts = () => {
   // keep postStatus during page loading
   const [postStatus, setpostStatus] = useState(false);
   // open and close New post field
-  const [openPost, setOpenPost] = useState(false);
+  const [openNewPost, setOpenNewPost] = useState(false);
   // keep user information from local storage
   const [user, setUser] = useState({});
   const { openAlbum } = useContext(UserContext);
@@ -43,7 +43,7 @@ const Posts = () => {
   // get data about posts from data base
   const fetchPosts = useMemo(async () => {
     try {
-      const result = await api("GET", "posts", user.id, "userId");
+      const result = await api("GET", "posts", { userId: user.id });
       const data = result.data;
 
       if (data) {
@@ -54,20 +54,28 @@ const Posts = () => {
     } catch (error) {
       console.log(error);
     }
+    axios.interceptors.request.use((value) => {
+      value.headers = {
+        "Content-Type": "application/json",
+      };
+      return value;
+    });
   }, [user]);
   return (
     <PostsContainer openAlbum={openAlbum}>
-      <NewPost openPost={openPost} />
+      <NewPost openNewPost={openNewPost} />
 
       <PostBtn
         onClick={() => {
-          setOpenPost((prev) => !prev);
+          setOpenNewPost((prev) => !prev);
         }}
       >
         +
       </PostBtn>
       <PostContainer>
-        {posts.length > 0 ? posts.map((post) => <Post post={post} />) : msg}
+        {posts.length > 0
+          ? posts.map((post) => <Post key={post.id} post={post} />)
+          : msg}
       </PostContainer>
     </PostsContainer>
   );

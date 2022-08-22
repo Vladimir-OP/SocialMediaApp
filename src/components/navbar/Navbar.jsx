@@ -14,8 +14,8 @@ import {
   BarItemAlbum,
 } from "./navbar.style";
 /**
- * create navbar and its items
- * @returns {component}
+ *  Creates navbar and its items
+ *  @returns {component}
  */
 const Navbar = () => {
   // keep value about navbar status (opened,closed)

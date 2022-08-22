@@ -8,9 +8,8 @@ import Navbar from "./components/navbar/Navbar";
 import Albums from "./components/albums/Albums";
 
 /**
- * Creates App component configured with globalstyles and main elements of the page
- *
- * @returns {component} App component including the components of the page
+ *  Creates App component configured with globalstyles and main elements of the page
+ *  @returns {component} App component including the components of the page
  */
 function App() {
   const location = useLocation();

@@ -8,8 +8,8 @@ import { UserContext } from "../UserContext";
 import { AlbumCont, AlbumTitle } from "./album.styled";
 /**
  *  Create single Album
- * @param {object} album
- * @returns {component}
+ *  @param {object} album
+ *  @returns {component}
  */
 const Album = ({ album }) => {
   // setAlbum value for photos
