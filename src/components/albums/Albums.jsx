@@ -1,9 +1,9 @@
-import axios from "axios";
 import { useContext, useEffect, useState, useMemo } from "react";
 import { UserContext } from "../UserContext";
 import { api } from "../../shared/api";
-import { AlbumConteiner, AlbumItemsCont } from "./Albums.style";
+import axios from "axios";
 import Album from "./Album";
+import { AlbumConteiner, AlbumItemsCont, UserName } from "./Albums.style";
 
 /**
  *  Creates albums list
@@ -33,6 +33,7 @@ const Albums = () => {
     } catch (error) {
       console.log(error);
     }
+    // set response header Content-Type
     axios.interceptors.request.use((value) => {
       value.headers = {
         "Content-Type": "application/json",
@@ -43,6 +44,7 @@ const Albums = () => {
 
   return (
     <AlbumConteiner openAlbum={openAlbum}>
+      <UserName>{user.name} Albums</UserName>
       <AlbumItemsCont>
         {albums.length > 0
           ? albums.map((album) => <Album key={album.id} album={album} />)

@@ -54,6 +54,7 @@ const Posts = () => {
     } catch (error) {
       console.log(error);
     }
+    // set response header Content-Type
     axios.interceptors.request.use((value) => {
       value.headers = {
         "Content-Type": "application/json",

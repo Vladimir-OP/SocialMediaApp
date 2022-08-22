@@ -15,21 +15,24 @@ const AlbumItemsCont = styled.div`
   height: fit-content;
   min-height: 10rem;
   max-height: 50rem;
-  justify-items: space-between;
+  margin-top: 5rem;
   position: absolute;
   left: 10rem;
-  top: 10rem;
 
   > div {
-    flex-wrap: unset;
-    flex-direction: column;
     border-radius: 0.75rem;
     background-color: white;
     border: unset;
     box-shadow: 1px 1px 16px #e3e3e3;
     width: 19rem;
-    justify-content: unset;
+    justify-content: space-between;
   }
 `;
 
-export { AlbumConteiner, AlbumItemsCont };
+const UserName = styled.h1`
+  color: rgb(42, 98, 143);
+  position: absolute;
+  left: 47rem;
+`;
+
+export { AlbumConteiner, AlbumItemsCont, UserName };

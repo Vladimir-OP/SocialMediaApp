@@ -3,8 +3,8 @@ import { UserContext } from "../UserContext";
 import PropTypes from "prop-types";
 import { api } from "../../shared/api";
 import axios from "axios";
-import { CommentsCont } from "./comments.style";
 import Comment from "./Comment";
+import { CommentsCont } from "./comments.style";
 
 /**
  *  Creates comments list
@@ -42,6 +42,7 @@ const Comments = ({ postID, show }) => {
     } catch (error) {
       console.log(error);
     }
+    // set response header Content-Type
     axios.interceptors.request.use((value) => {
       value.headers = {
         "Content-Type": "application/json",

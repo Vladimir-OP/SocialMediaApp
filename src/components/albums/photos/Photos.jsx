@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState, useMemo } from "react";
 import { UserContext } from "../../UserContext";
 import { api } from "../../../shared/api";
-import { PhotosCont } from "./photos.style";
-import Photo from "./Photo";
 import axios from "axios";
+import Photo from "./Photo";
+import { PhotosCont } from "./photos.style";
 
 /**
  *  Creates photos list
@@ -30,6 +30,7 @@ const Photos = () => {
     } catch (error) {
       console.log(error);
     }
+    // set response header Content-Type
     axios.interceptors.request.use((value) => {
       value.headers = {
         "Content-Type": "image/png",

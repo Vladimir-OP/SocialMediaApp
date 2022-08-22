@@ -1,11 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../UserContext";
+import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolder } from "@fortawesome/free-solid-svg-icons";
-import { UserContext } from "../UserContext";
-import { AlbumCont, AlbumTitle } from "./album.styled";
+import { AlbumCont, AlbumTitle, AlbumIcon } from "./album.styled";
 /**
  *  Create single Album
  *  @param {object} album
@@ -22,9 +21,11 @@ const Album = ({ album }) => {
         setAlbum(album);
       }}
     >
-      <AlbumTitle>
-        <FontAwesomeIcon icon={faFolder} /> {album.title}
-      </AlbumTitle>
+      <AlbumIcon>
+        <FontAwesomeIcon icon={faFolder} />
+      </AlbumIcon>
+
+      <AlbumTitle>{album.title}</AlbumTitle>
     </AlbumCont>
   );
 };

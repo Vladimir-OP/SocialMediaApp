@@ -1,12 +1,12 @@
 import { useEffect, useContext } from "react";
 import { UserContext } from "../UserContext";
 import { api } from "../../shared/api";
-import Posts from "../Posts/Posts";
 import axios from "axios";
-import { UserName } from "../Posts/Posts.style";
-import { Container } from "./User.style";
+import Posts from "../Posts/Posts";
 import Logout from "../LogOut/Logout";
 import Albums from "../albums/Albums";
+import { UserName } from "../Posts/Posts.style";
+import { Container } from "./User.style";
 
 /**
  *  Get information about user
@@ -23,6 +23,7 @@ const User = () => {
       try {
         // fetch data from database
         const data = await api("GET", "users", { id: userId });
+        // set response header Content-Type
         axios.interceptors.request.use((value) => {
           value.headers = {
             "Content-Type": "application/json",

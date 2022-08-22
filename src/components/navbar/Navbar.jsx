@@ -1,6 +1,5 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImages, faUser } from "@fortawesome/free-regular-svg-icons";
 import { Turn } from "hamburger-react";
