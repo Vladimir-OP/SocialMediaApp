@@ -1,11 +1,11 @@
-import { Routes, Route, useLocation } from "react-router-dom";
-import UserContextProvider from "./components/UserContext";
+import { Routes, Route, useLocation, Router } from "react-router-dom";
+import UserContextProvider from "./components/contexts/UserContext";
 import Login from "./components/Login/Login";
 import User from "./components/User/User";
 import Logout from "./components/LogOut/Logout";
-import Photos from "./components/albums/photos/Photos";
-import Navbar from "./components/navbar/Navbar";
-import Albums from "./components/albums/Albums";
+import Photos from "./components/Photos/Photos";
+import Navbar from "./components/Navbar/Navbar";
+import Albums from "./components/Albums/Albums";
 
 /**
  *  Creates App component configured with globalstyles and main elements of the page

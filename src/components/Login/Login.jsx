@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../UserContext";
+import { UserContext } from "../contexts/UserContext";
 import { api } from "../../shared/api";
 import {
   LoginForm,
@@ -25,6 +25,7 @@ const Login = () => {
 
   // get user from db
   const onSubmit = async (e) => {
+    console.log("user loged in");
     e.preventDefault();
     try {
       const { data: user } = await api("GET", "users", { email });
@@ -43,7 +44,7 @@ const Login = () => {
   };
 
   return (
-    <LoginForm onSubmit={onSubmit}>
+    <LoginForm  onSubmit={onSubmit}>
       <LoginHeader>Login</LoginHeader>
       <LoginInputName>Email</LoginInputName>
       <InputContainer
@@ -61,7 +62,9 @@ const Login = () => {
       >
         wrong email please try again
       </WrongEmail>
-      <LoginBtn type="submit">Login</LoginBtn>
+      <LoginBtn data-testid="Login"  type="submit">
+        Login
+      </LoginBtn>
     </LoginForm>
   );
 };

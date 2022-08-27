@@ -11,12 +11,12 @@ const Comment = ({ post: comment }) => {
   // determine which color should be
   const color = colors[Math.floor(Math.random() * colors.length)];
   // make comment writer's name uppercase
-  const displayName = comment.email.toUpperCase();
+  const displayName = (comment.email[0] + comment.email[1]).toUpperCase();
 
   return (
-    <CommentCont>
-      <CommentName iconColor={color}>
-        <p>{displayName[0] + displayName[1]}</p>
+    <CommentCont data-testid="Comment">
+      <CommentName data-testid="CommentName" iconColor={color}>
+        <p>{displayName}</p>
       </CommentName>
       <CommentBody>{comment.body}</CommentBody>
     </CommentCont>

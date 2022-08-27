@@ -1,10 +1,9 @@
 import { useEffect, useState, useMemo, useContext } from "react";
-import axios from "axios";
 import { api } from "../../shared/api";
-import { UserContext } from "../UserContext";
-import NewPost from "./NewPost";
-import Post from "./Post";
-import { PostContainer } from "./Post.style";
+import { UserContext } from "../contexts/UserContext";
+import NewPost from "../NewPost/NewPost";
+import Post from "../Post/Post";
+import { PostContainer } from "../Post/Post.style";
 import { PostBtn, PostsContainer } from "./Posts.style";
 
 /**
@@ -54,26 +53,20 @@ const Posts = () => {
     } catch (error) {
       console.log(error);
     }
-    // set response header Content-Type
-    axios.interceptors.request.use((value) => {
-      value.headers = {
-        "Content-Type": "application/json",
-      };
-      return value;
-    });
   }, [user]);
   return (
     <PostsContainer openAlbum={openAlbum}>
       <NewPost openNewPost={openNewPost} />
 
       <PostBtn
+        data-testid="PostBtn"
         onClick={() => {
           setOpenNewPost((prev) => !prev);
         }}
       >
         +
       </PostBtn>
-      <PostContainer>
+      <PostContainer data-testid="postContainer">
         {posts.length > 0
           ? posts.map((post) => <Post key={post.id} post={post} />)
           : msg}

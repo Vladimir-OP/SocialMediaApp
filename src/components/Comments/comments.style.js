@@ -4,7 +4,10 @@ const CommentsCont = styled.div`
   width: auto;
   background: #dbedfb;
   height: auto;
-  
 `;
 
-export { CommentsCont };
+const Commentsglobal = styled.div`
+ ;
+`;
+
+export { CommentsCont, Commentsglobal };

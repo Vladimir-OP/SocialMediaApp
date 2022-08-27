@@ -2,8 +2,8 @@ import { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment } from "@fortawesome/free-solid-svg-icons";
-import { UserContext } from "../UserContext";
-import Comments from "../comments/Comments";
+import { UserContext } from "../contexts/UserContext";
+import Comments from "../Comments/Comments";
 import {
   PostContainer,
   PostHeader,
@@ -29,6 +29,7 @@ const Post = ({ post }) => {
       <PostHeader>
         <PostTitle>{post.title}</PostTitle>
         <CommentBtn
+          data-testid="commentBtn"
           onClick={() => {
             setOpenComments((prev) => !prev);
           }}

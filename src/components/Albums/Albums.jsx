@@ -1,8 +1,7 @@
 import { useContext, useEffect, useState, useMemo } from "react";
-import { UserContext } from "../UserContext";
+import { UserContext } from "../contexts/UserContext";
 import { api } from "../../shared/api";
-import axios from "axios";
-import Album from "./Album";
+import Album from "../Album/Album";
 import { AlbumConteiner, AlbumItemsCont, UserName } from "./Albums.style";
 
 /**
@@ -33,19 +32,12 @@ const Albums = () => {
     } catch (error) {
       console.log(error);
     }
-    // set response header Content-Type
-    axios.interceptors.request.use((value) => {
-      value.headers = {
-        "Content-Type": "application/json",
-      };
-      return value;
-    });
   }, [user]);
 
   return (
-    <AlbumConteiner openAlbum={openAlbum}>
+    <AlbumConteiner openAlbum={openAlbum} >
       <UserName>{user.name} Albums</UserName>
-      <AlbumItemsCont>
+      <AlbumItemsCont data-testid="Albums">
         {albums.length > 0
           ? albums.map((album) => <Album key={album.id} album={album} />)
           : "no albums"}

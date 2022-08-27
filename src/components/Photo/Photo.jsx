@@ -16,6 +16,7 @@ const Photo = ({ photo }) => {
   const [openInfo, setOpenInfo] = useState(false);
   return (
     <PhotoCont
+      data-testid="photo"
       onMouseEnter={() => {
         setOpenInfo(true);
       }}
@@ -26,7 +27,7 @@ const Photo = ({ photo }) => {
       <AlbumPhoto src={photo.url}></AlbumPhoto>
 
       <BlackField openInfo={openInfo}>
-        <PhotoInfoCont>{photo.title}</PhotoInfoCont>
+        <PhotoInfoCont data-testid="photoInfo">{photo.title}</PhotoInfoCont>
       </BlackField>
     </PhotoCont>
   );
@@ -35,7 +36,7 @@ const Photo = ({ photo }) => {
 Photo.propTypes = {
   Photo: PropTypes.shape({
     title: PropTypes.string,
-    url:PropTypes.string
+    url: PropTypes.string,
   }),
 };
 

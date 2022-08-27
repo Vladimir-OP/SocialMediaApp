@@ -35,6 +35,7 @@ const PostContainer = styled.div`
     > div {
       font-size: small;
       box-shadow: unset;
+      background: none;
     }
   }
 `;

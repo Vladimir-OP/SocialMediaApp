@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext,  useState } from "react";
 import PropTypes from "prop-types";
 
 // context to share data realted to user
@@ -10,7 +10,7 @@ export const UserContext = createContext(null);
  * @returns {contextProvider} Context provider containing the children with shared data
  */
 const UserContextProvider = ({ children }) => {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState([]);
   const [openAlbum, setOpenAlbum] = useState(false);
   const [comments, setComments] = useState([]);
   const [album, setAlbum] = useState([]);

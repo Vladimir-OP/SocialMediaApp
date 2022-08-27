@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../UserContext";
+import { UserContext } from "../contexts/UserContext";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolder } from "@fortawesome/free-solid-svg-icons";
@@ -16,6 +16,7 @@ const Album = ({ album }) => {
   const navigate = useNavigate();
   return (
     <AlbumCont
+    data-testid="Album"
       onClick={() => {
         navigate("/photos");
         setAlbum(album);

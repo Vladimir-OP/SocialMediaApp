@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImages, faUser } from "@fortawesome/free-regular-svg-icons";
 import { Turn } from "hamburger-react";
-import { UserContext } from "../UserContext";
+import { UserContext } from "../contexts/UserContext";
 import {
   NavBarCont,
   NavBarItems,
@@ -25,8 +25,9 @@ const Navbar = () => {
   const [albumIconColor, setAlbumIconColor] = useState(false);
   // keep value about album status and opens it on click
   const { setOpenAlbum } = useContext(UserContext);
-  const navigare = useNavigate();
+  const navigate = useNavigate();
 
+  console.log("nacbar pathname: ", window.location.pathname);
   return (
     <NavCont>
       <NavIcon
@@ -36,25 +37,28 @@ const Navbar = () => {
       >
         <Turn />
       </NavIcon>
-      <NavBarCont openNavBar={openNavBar}>
-        <NavBarItems>
+      <NavBarCont openNavBar={openNavBar} data-testid="NavBar">
+        <NavBarItems data-testid="Navbar">
           <BarItemUser
+            data-testid="BarItemUser"
             onClick={() => {
               setUserIconColor((prev) => !prev);
               setAlbumIconColor(false);
               setOpenAlbum(false);
-              navigare("/user");
+              navigate("/user");
+              console.log(111111111);
             }}
             iconColor={userIconColor}
           >
             <FontAwesomeIcon icon={faUser} />
           </BarItemUser>
           <BarItemAlbum
+            data-testid="BarItemAlbum"
             onClick={() => {
               setOpenAlbum(true);
               setAlbumIconColor((prev) => !prev);
               setUserIconColor(false);
-              navigare("/albums");
+              navigate("/albums");
             }}
             iconColor={albumIconColor}
           >

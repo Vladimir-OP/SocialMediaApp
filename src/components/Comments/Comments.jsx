@@ -1,10 +1,9 @@
 import { useEffect, useState, useContext, useMemo } from "react";
-import { UserContext } from "../UserContext";
+import { UserContext } from "../contexts/UserContext";
 import PropTypes from "prop-types";
 import { api } from "../../shared/api";
-import axios from "axios";
-import Comment from "./Comment";
-import { CommentsCont } from "./comments.style";
+import Comment from "../Comment/Comment";
+import { CommentsCont, Commentsglobal } from "./comments.style";
 
 /**
  *  Creates comments list
@@ -42,24 +41,17 @@ const Comments = ({ postID, show }) => {
     } catch (error) {
       console.log(error);
     }
-    // set response header Content-Type
-    axios.interceptors.request.use((value) => {
-      value.headers = {
-        "Content-Type": "application/json",
-      };
-      return value;
-    });
   }, [postID]);
   return (
-    <>
+    <Commentsglobal  data-testid="globalCont">
       {show && (
-        <CommentsCont>
+        <CommentsCont data-testid="Comments">
           {comments.length > 0
             ? comments.map((post) => <Comment key={post.id} post={post} />)
             : msg}
         </CommentsCont>
       )}
-    </>
+    </Commentsglobal>
   );
 };
 

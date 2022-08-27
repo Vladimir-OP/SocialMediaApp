@@ -1,10 +1,8 @@
 import { useEffect, useContext } from "react";
-import { UserContext } from "../UserContext";
+import { UserContext } from "../contexts/UserContext";
 import { api } from "../../shared/api";
-import axios from "axios";
 import Posts from "../Posts/Posts";
-import Logout from "../LogOut/Logout";
-import Albums from "../albums/Albums";
+import Albums from "../Albums/Albums";
 import { UserName } from "../Posts/Posts.style";
 import { Container } from "./User.style";
 
@@ -23,13 +21,6 @@ const User = () => {
       try {
         // fetch data from database
         const data = await api("GET", "users", { id: userId });
-        // set response header Content-Type
-        axios.interceptors.request.use((value) => {
-          value.headers = {
-            "Content-Type": "application/json",
-          };
-          return value;
-        });
         return data;
       } catch (error) {
         console.log(error);
@@ -41,8 +32,7 @@ const User = () => {
 
   return (
     <>
-      <Logout />
-      <Container>
+      <Container data-testid = "user-1">
         <UserName> Welcome {user.name}</UserName>
         <Albums />
         <Posts />
