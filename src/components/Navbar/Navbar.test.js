@@ -1,11 +1,13 @@
 import { render, fireEvent, screen } from "@testing-library/react";
+import * as router from "react-router";
 import Navbar from "./Navbar";
 import UserContextProvider from "../contexts/UserContext";
 
-jest.mock("react-router-dom", () => ({
-  ...jest.requireActual("react-router-dom"),
-  useNavigate: () => jest.fn(),
-}));
+const navigate = jest.fn();
+
+beforeEach(() => {
+  jest.spyOn(router, "useNavigate").mockImplementation(() => navigate);
+});
 
 test("check navigation to user page", () => {
   render(
@@ -15,7 +17,7 @@ test("check navigation to user page", () => {
   );
 
   fireEvent.click(screen.getByTestId("BarItemUser"));
-  expect(window.location.pathname).toEqual("/user");
+  expect(navigate).toHaveBeenCalledWith("/user");
 });
 
 test("check navigation to album page", () => {
@@ -26,7 +28,7 @@ test("check navigation to album page", () => {
   );
 
   fireEvent.click(screen.getByTestId("BarItemAlbum"));
-  expect(window.location.pathname).toBe("/albums");
+  expect(navigate).toHaveBeenCalledWith("/albums");
 });
 
 // test("navbar opening", () => {

@@ -1,21 +1,30 @@
-// import Login from "./Login";
-// import { api } from "../../shared/api";
-// import UserContextProvider from "../contexts/UserContext";
-// import { render, fireEvent, screen } from "@testing-library/react";
+import Login from "./Login";
+import * as router from "react-router";
+import UserContextProvider from "../contexts/UserContext";
+import { render, fireEvent, screen } from "@testing-library/react";
 
-// jest.mock("react-router-dom", () => ({
-//   ...jest.requireActual("react-router-dom"),
-//   useNavigate: () => jest.fn(),
-// }));
+const navigate = jest.fn();
 
-// test("test login", async () => {
-//   let x = await api("GET",'users');
-//   const { container } = render(
-//     <UserContextProvider>
-//       <Login />
-//     </UserContextProvider>
-//   );
-//   fireEvent.click(screen.getByTestId("Login"), new MouseEvent("click"));
+beforeEach(() => {
+  jest.spyOn(router, "useNavigate").mockImplementation(() => navigate);
+});
 
-//   expect(window.location.pathname).toBe("/user");
-// });
+function hasInputValue(e, inputValue) {
+  return screen.getByDisplayValue(inputValue) === e;
+}
+
+test("test login", async () => {
+  const email = "Sincere@april.biz";
+
+  render(
+    <UserContextProvider>
+      <Login />
+    </UserContextProvider>
+  );
+
+  const emailInput = screen.getByTestId("emailInput");
+
+  fireEvent.change(emailInput, { target: { value: email } });
+
+  expect(hasInputValue(emailInput, email)).toBe(true);
+});

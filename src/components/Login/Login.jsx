@@ -25,7 +25,6 @@ const Login = () => {
 
   // get user from db
   const onSubmit = async (e) => {
-    console.log("user loged in");
     e.preventDefault();
     try {
       const { data: user } = await api("GET", "users", { email });
@@ -44,10 +43,11 @@ const Login = () => {
   };
 
   return (
-    <LoginForm  onSubmit={onSubmit}>
+    <LoginForm onSubmit={onSubmit}>
       <LoginHeader>Login</LoginHeader>
       <LoginInputName>Email</LoginInputName>
       <InputContainer
+        data-testid="emailInput"
         type="email"
         name="email"
         placeholder="john.albert@example.com"
@@ -62,7 +62,7 @@ const Login = () => {
       >
         wrong email please try again
       </WrongEmail>
-      <LoginBtn data-testid="Login"  type="submit">
+      <LoginBtn data-testid="Login" type="submit">
         Login
       </LoginBtn>
     </LoginForm>

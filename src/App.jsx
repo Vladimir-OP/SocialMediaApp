@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation, Router } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import UserContextProvider from "./components/contexts/UserContext";
 import Login from "./components/Login/Login";
 import User from "./components/User/User";
@@ -8,7 +8,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Albums from "./components/Albums/Albums";
 
 /**
- *  Creates App component configured with globalstyles and main elements of the page
+ *  Creates App component configured with main elements of the page
  *  @returns {component} App component including the components of the page
  */
 function App() {

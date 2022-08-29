@@ -27,7 +27,6 @@ const Navbar = () => {
   const { setOpenAlbum } = useContext(UserContext);
   const navigate = useNavigate();
 
-  console.log("nacbar pathname: ", window.location.pathname);
   return (
     <NavCont>
       <NavIcon
@@ -46,7 +45,6 @@ const Navbar = () => {
               setAlbumIconColor(false);
               setOpenAlbum(false);
               navigate("/user");
-              console.log(111111111);
             }}
             iconColor={userIconColor}
           >

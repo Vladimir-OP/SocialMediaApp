@@ -1,11 +1,13 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import UserContextProvider from "../contexts/UserContext";
 import Album from "./Album";
+import * as router from "react-router";
 
-jest.mock("react-router-dom", () => ({
-  ...jest.requireActual("react-router-dom"),
-  useNavigate: () => jest.fn(),
-}));
+const navigate = jest.fn();
+
+beforeEach(() => {
+  jest.spyOn(router, "useNavigate").mockImplementation(() => navigate);
+});
 
 const renderAlbum = () => {
   render(
@@ -21,9 +23,8 @@ const data = {
   title: "quidem molestiae enim",
 };
 
-test("onClick navigation to pictures page",()=>{
-    renderAlbum();
-    const albumBtn = screen.getByTestId("Album");
-    fireEvent.click(albumBtn)
-    expect(window.location.pathname).toMatch("/photos")
-})
+test("onClick navigation to pictures page", () => {
+  renderAlbum();
+  fireEvent.click(screen.getByTestId("Album"));
+  expect(navigate).toHaveBeenCalledWith("/photos");
+});
