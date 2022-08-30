@@ -5,7 +5,7 @@ import UserContextProvider from "../contexts/UserContext";
 test("Photos dsiplaying", () => {
   render(
     <UserContextProvider>
-      <Photos />
+      <Photos/>
     </UserContextProvider>
   );
   const result = screen.getByTestId("photos");

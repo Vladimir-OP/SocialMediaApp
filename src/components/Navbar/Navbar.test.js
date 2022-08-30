@@ -31,28 +31,3 @@ test("check navigation to album page", () => {
   expect(navigate).toHaveBeenCalledWith("/albums");
 });
 
-// test("navbar opening", () => {
-//   render(
-//     <UserContextProvider>
-//       <Navbar />
-//     </UserContextProvider>
-//   );
-//   const btn = screen.getByTestId("NavBar", { openNavBar: false });
-
-//   fireEvent.change(btn, {
-//     target: { value: false },
-//   });
-
-//   expect(screen.getByTestId("NavBar")).toBeInTheDocument();
-// });
-
-//   test("check  page", () => {
-//     const btn = render(
-//       <UserContextProvider>
-//         <Navbar />
-//       </UserContextProvider>
-//     ).queryByTestId("BarItemAlbum");
-
-//     fireEvent.click(screen.getByTestId("BarItemAlbum"));
-//     expect().toBe("/albums");
-//   });

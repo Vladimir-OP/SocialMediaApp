@@ -1,5 +1,4 @@
-import { renderHook } from "@testing-library/react";
-import { fireEvent, render, screen } from "@testing-library/react";
+import {  render, screen } from "@testing-library/react";
 import UserContextProvider from "../contexts/UserContext";
 import Albums from "./Albums";
 

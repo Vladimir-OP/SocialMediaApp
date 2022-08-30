@@ -9,6 +9,7 @@ import { PhotosCont } from "./photos.style";
  *  @returns {component}
  */
 const Photos = () => {
+  console.log("photos rendering");
   // keep album information taken from userContext
   const { album } = useContext(UserContext);
   // keep photos information
