@@ -1,20 +1,32 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useContext } from "react";
 import { api } from "../../shared/api";
-import Logout from "../LogOut/Logout";
-import NewPost from "./NewPost";
-import Post from "./Post";
-import { PostContainer } from "./Post.style";
-import { UserName, PostBtn } from "./Posts.style";
+import { UserContext } from "../contexts/UserContext";
+import NewPost from "../NewPost/NewPost";
+import Post from "../Post/Post";
+import { PostContainer } from "../Post/Post.style";
+import { PostBtn, PostsContainer } from "./Posts.style";
+
+/**
+ *  Creates Posts list
+ *  @returns {component} Posts component
+ */
 
 const Posts = () => {
+  // keep message text and change it depend on post status
   const [msg, setMsg] = useState("posts are loading");
+  // keep posts information
   const [posts, setPosts] = useState([]);
+  // keep postStatus during page loading
   const [postStatus, setpostStatus] = useState(false);
-  const [openPost, setOpenPost] = useState(false);
+  // open and close New post field
+  const [openNewPost, setOpenNewPost] = useState(false);
+  // keep user information from local storage
   const [user, setUser] = useState({});
+  const { openAlbum } = useContext(UserContext);
 
   useEffect(() => {
     (async () => {
+      // take user data from local storage
       const userInLocalStrg = await JSON.parse(localStorage.getItem("user"));
       if (userInLocalStrg) {
         setUser(userInLocalStrg);
@@ -27,10 +39,10 @@ const Posts = () => {
       }
     })();
   }, []);
-
+  // get data about posts from data base
   const fetchPosts = useMemo(async () => {
     try {
-      const result = await api("GET", "posts", user.id, "userId");
+      const result = await api("GET", "posts", { userId: user.id });
       const data = result.data;
 
       if (data) {
@@ -43,22 +55,23 @@ const Posts = () => {
     }
   }, [user]);
   return (
-    <>
-      <NewPost openPost={openPost} />
+    <PostsContainer openAlbum={openAlbum}>
+      <NewPost openNewPost={openNewPost} />
 
-      <UserName> Welcome {user.name}</UserName>
       <PostBtn
+        data-testid="PostBtn"
         onClick={() => {
-          setOpenPost((prev) => !prev);
+          setOpenNewPost((prev) => !prev);
         }}
       >
         +
       </PostBtn>
-      <PostContainer>
-        <Logout />
-        {posts.length > 0 ? posts.map((post) => <Post post={post} />) : msg}
+      <PostContainer data-testid="postContainer">
+        {posts.length > 0
+          ? posts.map((post) => <Post key={post.id} post={post} />)
+          : msg}
       </PostContainer>
-    </>
+    </PostsContainer>
   );
 };
 

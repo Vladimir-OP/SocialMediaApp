@@ -1,8 +1,9 @@
 import { useState, useContext } from "react";
+import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment } from "@fortawesome/free-solid-svg-icons";
-import { UserContext } from "../UserContext";
-import Comments from "../comments/Comments";
+import { UserContext } from "../contexts/UserContext";
+import Comments from "../Comments/Comments";
 import {
   PostContainer,
   PostHeader,
@@ -12,8 +13,15 @@ import {
   CommentCount,
 } from "./Post.style";
 
+/**
+ *  Creates a post and gives style to it
+ *  @param {object} post
+ *  @returns {component} Post component
+ */
 const Post = ({ post }) => {
-  const { commentsCount } = useContext(UserContext);
+  // keep comments count
+  const { comments } = useContext(UserContext);
+  // keep boolean value and open comment section
   const [openComments, setOpenComments] = useState(false);
 
   return (
@@ -21,13 +29,14 @@ const Post = ({ post }) => {
       <PostHeader>
         <PostTitle>{post.title}</PostTitle>
         <CommentBtn
+          data-testid="commentBtn"
           onClick={() => {
             setOpenComments((prev) => !prev);
           }}
         >
           <CommentCount>
             <FontAwesomeIcon icon={faComment} />
-            {commentsCount}
+            {comments.length}
           </CommentCount>
         </CommentBtn>
       </PostHeader>
@@ -37,4 +46,10 @@ const Post = ({ post }) => {
   );
 };
 
+Post.propTypes = {
+  post: PropTypes.object,
+};
+Post.defaultProps = {
+  post: {},
+};
 export default Post;

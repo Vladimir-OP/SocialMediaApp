@@ -10,6 +10,7 @@ const PostContainer = styled.div`
   height: fit-content;
   min-height: 10rem;
   max-height: 50rem;
+  justify-items: space-between;
 
   > div {
     flex-wrap: unset;
@@ -19,6 +20,7 @@ const PostContainer = styled.div`
     border: unset;
     box-shadow: 1px 1px 16px #e3e3e3;
     width: 19rem;
+    justify-content: unset;
 
     > h3 {
       display: flex;
@@ -33,6 +35,7 @@ const PostContainer = styled.div`
     > div {
       font-size: small;
       box-shadow: unset;
+      background: none;
     }
   }
 `;

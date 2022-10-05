@@ -1,15 +1,17 @@
 import styled from "styled-components";
 
 const CreatePostCont = styled.div(
-  ({ openPost }) => `
-overflow: hidden;
-display:${openPost ? "block" : "none"};
-position:absolute;
-width:100%;
-height:100%;
-background-color:rgb(60 82 113 / 70%);
-z-index:100;
-`
+  ({ openNewPost }) => `
+  left:0rem;
+  overflow: hidden;
+  display: ${openNewPost ? "block" : "none"};
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(60 82 113 / 70%);
+  z-index: 100;
+  `
 );
 
 const NewPostCont = styled.form`

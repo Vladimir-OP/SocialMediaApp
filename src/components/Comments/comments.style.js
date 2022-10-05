@@ -6,4 +6,8 @@ const CommentsCont = styled.div`
   height: auto;
 `;
 
-export { CommentsCont };
+const Commentsglobal = styled.div`
+ ;
+`;
+
+export { CommentsCont, Commentsglobal };

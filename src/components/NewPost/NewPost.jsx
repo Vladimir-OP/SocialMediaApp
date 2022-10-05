@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import {
   NewPostCont,
   NewPostHeader,
@@ -8,19 +9,27 @@ import {
   NewPostBtn,
   CreatePostCont,
 } from "./NewPost.style";
-
-const NewPost = ({ openPost }) => {
+/**
+ *  Creates form for posting new Post and store that post in page
+ *  @param {boolean} openNewPost
+ *  @returns {component} NewPost component
+ */
+const NewPost = ({ openNewPost }) => {
+  // keep new post title
   const [title, setTitle] = useState("");
+  // keep new post body
   const [body, setBody] = useState("");
+  // keep user information
   const [user, setUser] = useState({});
 
   useEffect(() => {
+    // take user data from local storage
     const userInLocalStrg = JSON.parse(localStorage.getItem("user"));
     if (userInLocalStrg) {
       setUser(userInLocalStrg);
     }
   }, []);
-
+  // store new post in page
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -38,7 +47,7 @@ const NewPost = ({ openPost }) => {
   };
 
   return (
-    <CreatePostCont openPost={openPost}>
+    <CreatePostCont openNewPost={openNewPost}>
       <NewPostCont onSubmit={onSubmit}>
         <NewPostHeader>Create New Post</NewPostHeader>
         <InputName>Title</InputName>
@@ -58,6 +67,14 @@ const NewPost = ({ openPost }) => {
       </NewPostCont>
     </CreatePostCont>
   );
+};
+
+NewPost.protoTypes = {
+  openPost: PropTypes.bool,
+};
+
+NewPost.defaultProps = {
+  openPost: false,
 };
 
 export default NewPost;

@@ -37,7 +37,11 @@ const PostsCont = styled.div`
 const UserName = styled.h1`
   color: rgb(42, 98, 143);
   width: 30rem;
-  margin-left: 3rem;
+  margin-left: 6rem;
 `;
 
-export { PostsCont, UserName, PostBtn };
+const PostsContainer = styled.div(
+  ({openAlbum}) =>`
+  display: ${openAlbum ? "none":"block"};
+`);
+export { PostsCont, UserName, PostBtn,PostsContainer };
